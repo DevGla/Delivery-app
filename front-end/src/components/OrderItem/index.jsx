@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
+import style from './index.module.css';
 
 export default function OrderItem({ id, status, data, totalPrice }) {
   const { userData: { role } } = useContext(UserContext);
@@ -43,3 +44,4 @@ OrderItem.propTypes = {
   data: PropTypes.string.isRequired,
   totalPrice: PropTypes.number.isRequired,
 };
+
