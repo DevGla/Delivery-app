@@ -27,8 +27,7 @@ function Login() {
   const submit = async (event) => {
     event.preventDefault();
     try {
-      const port = process.env.REACT_APP_PORT_BACK;
-      const login = await axios.post(`http://localhost:${port}/login`, {
+      const login = await axios.post(`http://localhost:3002/login`, {
         email,
         password,
       });

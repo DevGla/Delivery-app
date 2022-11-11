@@ -4,10 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import { SnackbarProvider, useSnackbar } from 'notistack';
 import { MenuItem, Select } from '@mui/material';
+import axios from 'axios';
 import style from './style.module.css';
 import CartContext from '../../context/CartContext';
-
-const axios = require('axios');
 
 function FormCheckout() {
   const navigate = useNavigate();
@@ -23,7 +22,7 @@ function FormCheckout() {
 
   async function getSellerId() {
     try {
-      const getSellers = await axios.get('http://localhost:3001/user/seller/all', {
+      const getSellers = await axios.get('http://localhost:3002/user/seller/all', {
         headers: {
           authorization: JSON.parse(localStorage.getItem('user'))?.token,
         },
@@ -40,7 +39,7 @@ function FormCheckout() {
   async function getId() {
     try {
       const { products, totalPrice } = cart;
-      const { data } = await axios.post('http://localhost:3001/sales/register', {
+      const { data } = await axios.post('http://localhost:3002/sales/register', {
         ...sale, products, totalPrice,
       }, {
         headers: {

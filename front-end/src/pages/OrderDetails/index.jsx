@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import Header from '../../components/Header';
 import ProductDetailsNav from '../../components/ProductsDetails-nav';
 import TabelaOrder from '../../components/TabelaOrder';
 
-const axios = require('axios');
 
 export default function OrderDetails() {
   const accessToken = JSON.parse(localStorage.getItem('user'));
@@ -15,7 +15,7 @@ export default function OrderDetails() {
     () => {
       async function getSales() {
         const { data } = await axios
-          .get(`http://localhost:3001/sales/${id}`, {
+          .get(`http://localhost:3002/sales/${id}`, {
             headers: {
               authorization: accessToken.token,
             },

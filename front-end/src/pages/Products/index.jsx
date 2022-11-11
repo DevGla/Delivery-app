@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GiShoppingCart } from 'react-icons/gi';
+import axios from 'axios'
 import Header from '../../components/Header';
 import ProductsCards from '../../components/ProductsCards';
 import CartContext from '../../context/CartContext';
 import configPrice from '../../helpers/configPrice';
 import style from './style.module.css';
 
-const axios = require('axios');
 
 export default function ProductsWide() {
   const navigate = useNavigate();
@@ -17,12 +17,7 @@ export default function ProductsWide() {
   useEffect(() => {
     async function getProducts() {
       try {
-        const { data } = await axios
-          .get('http://localhost:3001/products', {
-            headers: {
-              authorization: JSON.parse(localStorage.getItem('user'))?.token,
-            },
-          });
+        const { data } = await axios.get('http://localhost:3002/products', { headers: { authorization: JSON.parse(localStorage.getItem('user'))?.token } });
         setProducts(data);
       } catch (error) {
         console.error(error);

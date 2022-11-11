@@ -15,7 +15,7 @@ export default function ProductDetailsNav({ element }) {
 
   async function updateStatus(saleStatus) {
     try {
-      await axios.patch(`http://localhost:3001/sales/${element.id}/update`, { status: saleStatus }, {
+      await axios.patch(`http://localhost:3002/sales/${element.id}/update`, { status: saleStatus }, {
         headers: {
           authorization: JSON.parse(localStorage.getItem('user'))?.token,
         } });

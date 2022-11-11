@@ -23,7 +23,7 @@ function Register() {
   async function submit(event) {
     event.preventDefault();
     try {
-      const newUser = await axios.post('http://localhost:3001/register', {
+      const newUser = await axios.post('http://localhost:3002/register', {
         name,
         email,
         password,
